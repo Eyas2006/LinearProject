@@ -5,7 +5,6 @@
 ![MatrixLab Pro](https://img.shields.io/badge/MatrixLab-Pro-brightgreen)
 ![Python](https://img.shields.io/badge/Python-Flask-blue)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)
-![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 
 **A comprehensive web-based platform for advanced matrix operations and differential equation solving**
@@ -47,10 +46,3 @@ MatrixLab Pro is an advanced mathematical computing platform that provides an in
 ### Prerequisites
 - Python 3.7 or higher
 - Modern web browser
-
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/your-username/matrixlab-pro.git
-cd matrixlab-pro
