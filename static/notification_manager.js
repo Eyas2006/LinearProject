@@ -1,4 +1,3 @@
-// notification_manager.js - Advanced Notification System
 class NotificationManager {
     constructor() {
         this.notificationQueue = [];
@@ -44,18 +43,15 @@ class NotificationManager {
     }
 
     displayNotification(notification) {
-        // Remove any existing notifications
         this.removeAllNotifications();
 
         const notificationElement = this.createNotificationElement(notification);
         document.body.appendChild(notificationElement);
 
-        // Animate in
         requestAnimationFrame(() => {
             notificationElement.classList.add('show');
         });
 
-        // Auto-remove after duration
         setTimeout(() => {
             this.hideNotification(notificationElement);
         }, notification.duration);
@@ -79,7 +75,6 @@ class NotificationManager {
             </div>
         `;
 
-        // Close button functionality
         const closeBtn = notificationElement.querySelector('.notification-close');
         closeBtn.addEventListener('click', () => {
             this.hideNotification(notificationElement);
@@ -132,7 +127,6 @@ class NotificationManager {
             .replace(/'/g, "&#039;");
     }
 
-    // Context-aware notification methods
     matrixOperationSuccess(operation, matrixName) {
         const messages = {
             'rref': `RREF computed for ${matrixName}`,
@@ -171,7 +165,7 @@ class NotificationManager {
     }
 }
 
-// Initialize notification manager
 document.addEventListener('DOMContentLoaded', () => {
     window.notificationManager = new NotificationManager();
+
 });
