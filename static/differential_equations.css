@@ -1,6 +1,3 @@
-/* Enhanced Professional Styling for Differential Equations Solver */
-
-/* Page-specific styling */
 [data-page="differential-equations"] {
     --primary-gradient: var(--gradient-diff);
     --success-color: var(--diff-success);
@@ -9,7 +6,6 @@
     --info-color: var(--diff-info);
 }
 
-/* Main Solver Panel Enhancements */
 #solver .dashboard-panel {
     border-left: 4px solid var(--diff-primary);
     background: var(--bg-card);
@@ -28,7 +24,6 @@
     pointer-events: none;
 }
 
-/* Enhanced Panel Headers */
 #solver .panel-header {
     background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
     border-bottom: 1px solid var(--border-primary);
@@ -52,7 +47,6 @@
     border-radius: 2px;
 }
 
-/* Enhanced Input Groups */
 .ode-controls {
     display: flex;
     flex-direction: column;
@@ -90,7 +84,6 @@
     font-size: 1.1rem;
 }
 
-/* Enhanced Input Fields */
 .ode-equation-input,
 .initial-conditions-input {
     font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
@@ -107,7 +100,6 @@
     transform: translateY(-1px);
 }
 
-/* Professional Example Buttons */
 .example-btn {
     padding: 1.25rem;
     border: 2px solid var(--border-primary);
@@ -162,7 +154,6 @@
     transform: scale(1.1);
 }
 
-/* Enhanced Solve Button */
 #solveOdeBtn {
     margin-top: 1rem;
     padding: 1.25rem 2.5rem;
@@ -202,7 +193,6 @@
     transform: translateY(0);
 }
 
-/* Professional Results Panel */
 .results-panel {
     border-left: 4px solid var(--diff-success);
 }
@@ -225,7 +215,6 @@
     border-color: var(--diff-primary);
 }
 
-/* Enhanced Plot Container */
 .plot-container {
     background: var(--bg-secondary);
     border-radius: var(--radius-lg);
@@ -276,7 +265,6 @@
     text-align: center;
 }
 
-/* Professional Analysis Container */
 .analysis-container {
     background: var(--bg-secondary);
     border-radius: var(--radius-lg);
@@ -335,7 +323,6 @@
     font-size: 0.85rem;
 }
 
-/* Enhanced Control Groups */
 .control-group {
     background: var(--bg-secondary);
     padding: 1.25rem;
@@ -355,7 +342,6 @@
     display: block;
 }
 
-/* Professional Range Controls */
 .range-controls {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -382,7 +368,6 @@
     padding-bottom: 0.5rem;
 }
 
-/* Enhanced Step Size Control */
 .step-size-control {
     display: flex;
     flex-direction: column;
@@ -395,7 +380,6 @@
     color: var(--text-secondary);
 }
 
-/* Input Hints Styling */
 .input-hint {
     font-size: 0.75rem;
     color: var(--text-tertiary);
@@ -403,7 +387,6 @@
     font-style: italic;
 }
 
-/* Loading State Enhancement */
 .ode-solving {
     position: relative;
 }
@@ -427,7 +410,6 @@
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Responsive Design Enhancements */
 @media (max-width: 768px) {
     #solver .dashboard-panel {
         border-left: 3px solid var(--diff-primary);
@@ -471,7 +453,6 @@
     }
 }
 
-/* Animation for smooth transitions */
 .solution-result {
     animation: fadeInUp 0.5s ease-out;
 }
@@ -487,7 +468,6 @@
     }
 }
 
-/* Enhanced mathematical typography */
 .math-symbol {
     font-family: 'Times New Roman', serif;
     font-style: italic;
@@ -502,7 +482,6 @@
     color: var(--diff-info);
 }
 
-/* Success state indicators */
 .solution-success {
     border-left-color: var(--diff-success) !important;
 }
@@ -513,4 +492,5 @@
 
 .solution-warning {
     border-left-color: var(--diff-warning) !important;
+
 }
