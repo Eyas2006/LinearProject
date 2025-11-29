@@ -1,4 +1,4 @@
-# LinearProject - MatrixLab Pro - Web-Based Math Calculator
+# MatrixLab Pro - Web-Based Math Calculator
 
 MatrixLab Pro is a powerful web application that helps students and researchers perform advanced matrix calculations and solve differential equations through an easy-to-use interface.
 
