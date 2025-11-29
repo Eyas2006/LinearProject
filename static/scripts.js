@@ -17,7 +17,6 @@ class MatrixLabPro {
     }
 
     initializeThemeManager() {
-        // Initialize theme manager if it doesn't exist
         if (!window.themeManager) {
             window.themeManager = {
                 currentTheme: localStorage.getItem('matrixLab-theme') || 'dark',
@@ -29,27 +28,22 @@ class MatrixLabPro {
                 }
             };
 
-            // Apply initial theme
             document.body.setAttribute('data-theme', window.themeManager.currentTheme);
         }
 
-        // Initialize theme toggle for matrix calculator page
         this.initializeThemeToggle();
     }
 
     initializeThemeToggle() {
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
-            // Remove existing event listeners
             const newToggle = themeToggle.cloneNode(true);
             themeToggle.parentNode.replaceChild(newToggle, themeToggle);
 
-            // Add new event listener
             document.getElementById('themeToggle').addEventListener('click', () => {
                 this.toggleTheme();
             });
 
-            // Update initial icon state
             this.updateThemeToggleIcon();
         }
     }
@@ -58,16 +52,13 @@ class MatrixLabPro {
         const currentTheme = document.body.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-        // Apply theme
         document.body.setAttribute('data-theme', newTheme);
         localStorage.setItem('matrixLab-theme', newTheme);
 
-        // Update theme manager
         if (window.themeManager) {
             window.themeManager.currentTheme = newTheme;
         }
 
-        // Update UI
         this.updateThemeToggleIcon();
         this.updateParticles();
 
@@ -110,13 +101,11 @@ class MatrixLabPro {
         if (window.notificationManager) {
             window.notificationManager.show(message, type, duration);
         } else {
-            // Fallback basic notification
             console.log(`${type}: ${message}`);
         }
     }
 
     initializeEventListeners() {
-        // Theme toggle listener is now handled separately
 
         document.getElementById('generateGridBtn').addEventListener('click', (e) => {
             e.preventDefault();
@@ -1074,5 +1063,6 @@ class MatrixLabPro {
             .replace(/'/g, "&#039;");
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => window.matrixLab = new MatrixLabPro());
