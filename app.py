@@ -439,8 +439,7 @@ def solve_ode_numerically(equation, conditions, ode_type, start, end, step):
 def solve_first_order_ode(equation, conditions, start, end, step):
     """Solve first order ODE: dy/dx = f(x, y)"""
     try:
-        # Parse equation like "dy/dx = x + y"
-        equation = equation.replace(' ', '')  # Remove spaces for easier parsing
+        equation = equation.replace(' ', '')
 
         # Handle different equation formats
         if 'dy/dx=' in equation:
@@ -450,7 +449,6 @@ def solve_first_order_ode(equation, conditions, start, end, step):
         else:
             raise ValueError("Invalid first order ODE format. Use: dy/dx = ... or y' = ...")
 
-        # Parse initial condition like "y(0)=1"
         conditions = conditions.replace(' ', '')
         ic_match = re.match(r"y\(([^)]+)\)=([^,]+)", conditions)
         if not ic_match:
@@ -459,22 +457,17 @@ def solve_first_order_ode(equation, conditions, start, end, step):
         x0 = float(ic_match.group(1))
         y0 = float(ic_match.group(2))
 
-        # Define the ODE function
         def ode_func(x, y):
-            # Replace y with current value and x with current x in expression
             local_expr = expr.replace('y', f'({y[0]})').replace('x', f'({x})')
             try:
-                # Safe evaluation of the expression
                 result = eval(local_expr, {"__builtins__": {}}, {})
                 return [result]
             except Exception as eval_error:
                 raise ValueError(f"Could not evaluate expression: {local_expr}. Error: {str(eval_error)}")
 
-        # Solve ODE
         t_eval = np.arange(start, end + step, step)
         solution = solve_ivp(ode_func, [start, end], [y0], t_eval=t_eval, method='RK45')
 
-        # Format results
         results = {
             "type": "first_order",
             "solution": {
@@ -499,9 +492,7 @@ def solve_second_order_ode(equation, conditions, start, end, step):
     try:
         equation = equation.replace(' ', '')
 
-        # For demonstration, solve simple harmonic oscillator: y'' + 4y = 0
         if "d²y/dx²+4y=0" in equation or "y''+4y=0" in equation:
-            # Parse initial conditions like "y(0)=0, y'(0)=1"
             conditions = conditions.replace(' ', '')
             y_match = re.search(r"y\(([^)]+)\)=([^,]+)", conditions)
             dy_match = re.search(r"y'\(([^)]+)\)=([^,]+)", conditions)
@@ -509,7 +500,6 @@ def solve_second_order_ode(equation, conditions, start, end, step):
             y0 = float(y_match.group(2)) if y_match else 0.0
             dy0 = float(dy_match.group(2)) if dy_match else 1.0
 
-            # Solve y'' + 4y = 0 by converting to system: y' = z, z' = -4y
             def ode_func(t, yz):
                 y, z = yz
                 return [z, -4 * y]
@@ -532,7 +522,6 @@ def solve_second_order_ode(equation, conditions, start, end, step):
             }
             return results
         else:
-            # Generic second order ODE solver (simplified)
             raise ValueError("This second order ODE solver currently supports: y'' + 4y = 0")
 
     except Exception as e:
@@ -545,7 +534,6 @@ def solve_system_ode(equation, conditions, start, end, step):
         equations = [eq.strip() for eq in equation.split(',')]
         conditions = conditions.replace(' ', '')
 
-        # Simple harmonic oscillator system: dx/dt = y, dy/dt = -x
         if any("dx/dt=y" in eq for eq in equations) and any("dy/dt=-x" in eq for eq in equations):
             # Parse initial conditions
             x_match = re.search(r"x\(([^)]+)\)=([^,]+)", conditions)
@@ -612,4 +600,5 @@ def solve_ode():
         return jsonify({"success": False, "error": str(e)})
 
 if __name__ == "__main__":
+
     app.run(debug=False, host='0.0.0.0', port=5000)
