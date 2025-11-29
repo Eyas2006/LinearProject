@@ -9,7 +9,6 @@ class DifferentialEquationsSolver {
     init() {
         this.initializeEventListeners();
         this.loadChartJS();
-        // Show welcome message
         setTimeout(() => {
             this.showNotification('Differential Equation Solver Ready', 'success', 5000);
         }, 1000);
@@ -19,7 +18,6 @@ class DifferentialEquationsSolver {
         if (window.notificationManager) {
             window.notificationManager.show(message, type, duration);
         } else {
-            // Fallback basic notification
             console.log(`${type}: ${message}`);
         }
     }
@@ -144,7 +142,6 @@ class DifferentialEquationsSolver {
                 this.plotSolution(data.result);
                 this.analyzeSolution(data.result);
 
-                // Use context-aware notification
                 if (window.notificationManager && window.notificationManager.odeSolutionSuccess) {
                     window.notificationManager.odeSolutionSuccess(data.result.type);
                 } else {
@@ -157,7 +154,6 @@ class DifferentialEquationsSolver {
         } catch (error) {
             this.showResult(`Error: ${error.message}\n\nPlease check your equation and initial conditions.`);
 
-            // Use context-aware error notification
             if (window.notificationManager && window.notificationManager.odeSolutionError) {
                 window.notificationManager.odeSolutionError(error.message);
             } else {
@@ -683,4 +679,5 @@ class DifferentialEquationsSolver {
 
 document.addEventListener('DOMContentLoaded', () => {
     window.deSolver = new DifferentialEquationsSolver();
+
 });
