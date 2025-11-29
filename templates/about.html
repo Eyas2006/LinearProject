@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/static/about.css">
 </head>
 <body data-theme="dark" data-page="about">
-    <!-- Animated Background -->
     <div class="animated-bg">
         <div class="matrix-grid-bg"></div>
         <div class="floating-elements">
@@ -18,7 +17,6 @@
         </div>
     </div>
 
-    <!-- Particle Background -->
     <div class="particles-container" id="particlesContainer"></div>
 
     <header class="header">
@@ -51,7 +49,6 @@
     <main class="main">
         <div class="container">
             <div class="main-grid about-grid">
-                <!-- Enhanced Academic Project Section -->
                 <section class="dashboard-panel academic-hero-panel">
                     <div class="panel-header">
                         <h2>🎓 Academic Research Project</h2>
@@ -81,7 +78,6 @@
                     </div>
                 </section>
 
-                <!-- Enhanced Developer Information -->
                 <section class="dashboard-panel">
                     <div class="panel-header">
                         <h2>👨‍💻 Project Developer & Researcher</h2>
@@ -127,7 +123,6 @@
                     </div>
                 </section>
 
-                <!-- Enhanced Supervisor Information -->
                 <section class="dashboard-panel supervisor-panel">
                     <div class="panel-header">
                         <h2>👨‍🏫 Academic Supervision</h2>
@@ -201,8 +196,6 @@
                     </div>
                 </section>
 
-                <!-- Rest of the sections remain the same -->
-                <!-- Project Features -->
                 <section class="dashboard-panel">
                     <div class="panel-header">
                         <h2>🚀 Project Features & Capabilities</h2>
@@ -210,7 +203,6 @@
                     </div>
                     <div class="panel-section">
                         <div class="features-grid">
-                            <!-- Feature cards remain the same -->
                             <div class="feature-card">
                                 <div class="feature-icon">🔢</div>
                                 <h4>Advanced Matrix Operations</h4>
@@ -245,7 +237,6 @@
                     </div>
                 </section>
 
-                <!-- Technical Specifications -->
                 <section class="dashboard-panel">
                     <div class="panel-header">
                         <h2>🛠️ Technical Architecture</h2>
@@ -288,7 +279,6 @@
                     </div>
                 </section>
 
-                <!-- Academic Impact -->
                 <section class="dashboard-panel">
                     <div class="panel-header">
                         <h2>🎯 Academic Significance</h2>
@@ -312,7 +302,6 @@
                     </div>
                 </section>
 
-                <!-- Contact & Future -->
                 <section class="dashboard-panel">
                     <div class="panel-header">
                         <h2>📞 Contact & Future Development</h2>
@@ -354,14 +343,11 @@
 
     <script src="/static/theme_manager.js"></script>
     <script src="/static/notification_manager.js">
-                // Enhanced about page notifications
         document.addEventListener('DOMContentLoaded', () => {
-            // Show welcome notification
             setTimeout(() => {
                 notificationManager.success('Welcome to MatrixLab Pro - Academic Research Project', 5000);
             }, 1000);
 
-            // Enhanced email click with better notification
             const emailLink = document.querySelector('.email-link');
             if (emailLink) {
                 emailLink.addEventListener('click', (e) => {
@@ -375,7 +361,6 @@
                 });
             }
 
-            // Add interaction notifications for features
             const featureCards = document.querySelectorAll('.feature-card');
             featureCards.forEach((card, index) => {
                 card.addEventListener('click', () => {
@@ -386,9 +371,7 @@
         });
     </script>
 <script>
-// Simple green box implementation for about page
 function showGreenBox(message, duration = 5000) {
-    // Remove any existing green box
     const existingGreenBox = document.querySelector('.green-box-notification');
     if (existingGreenBox) {
         existingGreenBox.remove();
@@ -418,23 +401,21 @@ function showGreenBox(message, duration = 5000) {
     });
 }
 
-// Show welcome message on about page
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         showGreenBox('Welcome to MatrixLab Pro - Academic Research Project', 5000);
     }, 1000);
 
-    // Add green box to email link
     const emailLink = document.querySelector('.email-link');
     if (emailLink) {
         emailLink.addEventListener('click', (e) => {
             e.preventDefault();
             showGreenBox('Email address copied to clipboard', 3000);
-            // Copy email to clipboard
             navigator.clipboard.writeText('i.i.almuhalwasalay@students.ptuk.edu.ps');
         });
     }
 });
 </script>
 </body>
+
 </html>
