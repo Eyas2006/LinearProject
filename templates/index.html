@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatrixLab Pro | Advanced Matrix Calculator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body data-theme="dark" data-page="matrix-calculator">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="matrix-grid-bg"></div>
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="logo">MatrixLab Pro</h1>
+                    <span class="logo-subtitle">Advanced Linear Algebra Toolkit</span>
+                </div>
+                <nav class="nav">
+                    <a href="#operations" class="nav-link active">Matrix Calculator</a>
+                    <a href="/differential-equations" class="nav-link">Differential Equations</a>
+                    <a href="/about" class="nav-link">About</a>
+                </nav>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12,18c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S15.3,18,12,18zM12,8c-2.2,0-4,1.8-4,4c0,2.2,1.8,4,4,4c2.2,0,4-1.8,4-4C16,9.8,14.2,8,12,8z"/>
+                            <path d="M12,4c-0.6,0-1-0.4-1-1V1c0-0.6,0.4-1,1-1s1,0.4,1,1v2C13,3.6,12.6,4,12,4z"/>
+                            <path d="M12,20c-0.6,0-1,0.4-1,1v2c0,0.6,0.4,1,1,1s1-0.4,1-1v-2C13,20.4,12.6,20,12,20z"/>
+                            <path d="M5.6,6.6c-0.3,0-0.5-0.1-0.7-0.3L3.5,4.9c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l1.4,1.4c0.4,0.4,0.4,1,0,1.4C6.1,6.5,5.9,6.6,5.6,6.6z"/>
+                            <path d="M19.8,16.8c-0.3,0-0.5-0.1-0.7-0.3l-1.4-1.4c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l1.4,1.4c0.4,0.4,0.4,1,0,1.4C20.3,16.7,20.1,16.8,19.8,16.8z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value" id="totalMatrices">0</div>
+                    <div class="stat-label">Matrices Stored</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-value" id="totalOperations">0</div>
+                    <div class="stat-label">Operations Today</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🟢</div>
+                    <div class="stat-value" id="systemStatus">Online</div>
+                    <div class="stat-label">System Status</div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="main-grid">
+                <!-- Left Column: Operations -->
+                <div class="left-column">
+                    <section id="operations" class="dashboard-panel operations-panel">
+                        <div class="panel-header">
+                            <h2>Matrix Operations</h2>
+                            <span class="panel-subtitle">Build, analyze, and compute</span>
+                        </div>
+
+                        <!-- Matrix Builder Section -->
+                        <div class="panel-section">
+                            <h3>Matrix Builder</h3>
+                            <div class="quick-actions">
+                                <button class="quick-btn" data-action="identity">
+                                    <span class="quick-icon">⎔</span>
+                                    Identity
+                                </button>
+                                <button class="quick-btn" data-action="zeros">
+                                    <span class="quick-icon">0</span>
+                                    Zeros
+                                </button>
+                                <button class="quick-btn" data-action="ones">
+                                    <span class="quick-icon">1</span>
+                                    Ones
+                                </button>
+                                <button class="quick-btn" data-action="random">
+                                    <span class="quick-icon">🎲</span>
+                                    Random
+                                </button>
+                            </div>
+
+                            <div class="matrix-controls">
+                                <div class="control-group">
+                                    <label>Matrix Name</label>
+                                    <input name="mName" id="mName" placeholder="Enter matrix name..." class="input-field"/>
+                                </div>
+                                <div class="control-group">
+                                    <label>Dimensions</label>
+                                    <div class="dimension-controls">
+                                        <input name="mRows" id="mRows" type="number" min="1" max="10" value="3" class="input-field compact"/>
+                                        <span class="dimension-separator">×</span>
+                                        <input name="mCols" id="mCols" type="number" min="1" max="10" value="3" class="input-field compact"/>
+                                        <button id="generateGridBtn" class="btn btn-primary">Build</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="matrixInputGrid" class="matrix-grid"></div>
+
+                            <div class="action-buttons">
+                                <button id="saveMatrixBtn" class="btn btn-secondary">
+                                    <span class="btn-icon">💾</span>
+                                    Save Matrix
+                                </button>
+                                <button id="clearMatrixBtn" class="btn btn-outline">
+                                    <span class="btn-icon">🗑️</span>
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Single Matrix Operations -->
+                        <div class="panel-section">
+                            <h3>Single Matrix Analysis</h3>
+                            <div class="operation-controls">
+                                <div class="control-group">
+                                    <label>Select Matrix</label>
+                                    <select id="singleMatrixSelect" class="input-field">
+                                        <option value="">Choose a matrix...</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label>Operation</label>
+                                    <select id="singleMatrixOp" class="input-field">
+                                        <option value="rref">Reduced Row Echelon</option>
+                                        <option value="ref">Row Echelon Form</option>
+                                        <option value="det">Determinant</option>
+                                        <option value="trace">Trace</option>
+                                        <option value="inverse">Inverse</option>
+                                        <option value="transpose">Transpose</option>
+                                        <option value="linear_independent">Linear Independence</option>
+                                        <option value="basis_dimension">Basis & Dimension</option>
+                                        <option value="eig">Eigen Analysis</option>
+                                        <option value="diagonalize">Diagonalization</option>
+                                        <option value="rank">Matrix Rank</option>
+                                        <option value="nullity">Nullity</option>
+                                    </select>
+                                </div>
+                                <button id="runSingleOpBtn" class="btn btn-primary">
+                                    <span class="btn-icon">🔍</span>
+                                    Analyze
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Matrix Algebra -->
+                        <div class="panel-section">
+                            <h3>Matrix Algebra</h3>
+                            <div class="operation-controls">
+                                <div class="control-row">
+                                    <div class="control-group">
+                                        <label>Matrix A</label>
+                                        <select id="matrix1Select" class="input-field">
+                                            <option value="">First matrix...</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>Operator</label>
+                                        <select id="matrixOperator" class="input-field">
+                                            <option value="+">Addition</option>
+                                            <option value="-">Subtraction</option>
+                                            <option value="*">Multiplication</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>Matrix B</label>
+                                        <select id="matrix2Select" class="input-field">
+                                            <option value="">Second matrix...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button id="runAlgebraOpBtn" class="btn btn-primary">
+                                    <span class="btn-icon">🧮</span>
+                                    Compute
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Scalar Operations -->
+                        <div class="panel-section">
+                            <h3>Scalar Operations</h3>
+                            <div class="operation-controls">
+                                <div class="control-row">
+                                    <div class="control-group">
+                                        <label>Matrix</label>
+                                        <select id="scalarMatrixSelect" class="input-field">
+                                            <option value="">Select matrix...</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>Scalar Value</label>
+                                        <input type="number" id="scalarValue" placeholder="Enter scalar" class="input-field"/>
+                                    </div>
+                                </div>
+                                <button id="runScalarOpBtn" class="btn btn-primary">
+                                    <span class="btn-icon">✖️</span>
+                                    Multiply
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Linear Systems -->
+                        <div class="panel-section">
+                            <h3>Linear Systems</h3>
+                            <div class="operation-controls">
+                                <div class="control-row">
+                                    <div class="control-group">
+                                        <label>Coefficient Matrix</label>
+                                        <select id="cramerMatrixSelect" class="input-field">
+                                            <option value="">Coefficient matrix...</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>Constant Vector</label>
+                                        <select id="cramerResultSelect" class="input-field">
+                                            <option value="">Constant vector...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button id="runCramerBtn" class="btn btn-primary">
+                                    <span class="btn-icon">⚖️</span>
+                                    Solve System
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column: Results & History -->
+                <div class="right-column">
+                    <!-- Results Section -->
+                    <section id="results" class="dashboard-panel results-panel">
+                        <div class="panel-header">
+                            <h2>Computation Results</h2>
+                            <span class="panel-subtitle">Live analysis output</span>
+                        </div>
+                        <div class="result-container">
+                            <pre id="result" class="result-output"></pre>
+                            <div class="result-actions">
+                                <button id="copyResultBtn" class="btn btn-outline">
+                                    <span class="btn-icon">📋</span>
+                                    Copy
+                                </button>
+                                <button id="clearResultBtn" class="btn btn-outline">
+                                    <span class="btn-icon">🗑️</span>
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- History Section -->
+                    <section id="history" class="dashboard-panel history-panel">
+                        <div class="panel-header">
+                            <h2>Recent Activity</h2>
+                            <div class="panel-actions">
+                                <button id="clearHistoryBtn" class="btn btn-outline">
+                                    <span class="btn-icon">🧹</span>
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                        <div id="historyList" class="history-list"></div>
+                    </section>
+
+                    <!-- Matrix Library -->
+                    <section class="dashboard-panel library-panel">
+                        <div class="panel-header">
+                            <h2>Matrix Library</h2>
+                            <span class="matrix-count" id="matrixCount">0 matrices</span>
+                        </div>
+                        <div class="library-container">
+                            <ul id="matrixList" class="matrix-list"></ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="matrixModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Matrix Editor</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label>Matrix Name</label>
+                    <input type="text" id="editMatrixName" class="input-field" placeholder="Enter matrix name">
+                </div>
+                <div id="editMatrixGrid" class="matrix-grid"></div>
+                <div class="modal-actions">
+                    <button id="updateMatrixBtn" class="btn btn-primary">
+                        <span class="btn-icon">💾</span>
+                        Update
+                    </button>
+                    <button id="deleteMatrixBtn" class="btn btn-danger">
+                        <span class="btn-icon">🗑️</span>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/scripts.js"></script>
+    <script src="/static/notification_manager.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Differential Equation Solver | MatrixLab Pro</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/differential_equations.css">
+</head>
+<body data-theme="dark" data-page="differential-equations">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="matrix-grid-bg"></div>
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="logo">MatrixLab Pro</h1>
+                    <span class="logo-subtitle">Differential Equation Solver</span>
+                </div>
+                <nav class="nav">
+                    <a href="/" class="nav-link">Matrix Calculator</a>
+                    <a href="#solver" class="nav-link active">Differential Equations</a>
+                    <a href="/about" class="nav-link">About</a>
+                </nav>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12,18c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S15.3,18,12,18zM12,8c-2.2,0-4,1.8-4,4c0,2.2,1.8,4,4,4c2.2,0,4-1.8,4-4C16,9.8,14.2,8,12,8z"/>
+                            <path d="M12,4c-0.6,0-1-0.4-1-1V1c0-0.6,0.4-1,1-1s1,0.4,1,1v2C13,3.6,12.6,4,12,4z"/>
+                            <path d="M12,20c-0.6,0-1,0.4-1,1v2c0,0.6,0.4,1,1,1s1-0.4,1-1v-2C13,20.4,12.6,20,12,20z"/>
+                            <path d="M5.6,6.6c-0.3,0-0.5-0.1-0.7-0.3L3.5,4.9c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l1.4,1.4c0.4,0.4,0.4,1,0,1.4C6.1,6.5,5.9,6.6,5.6,6.6z"/>
+                            <path d="M19.8,16.8c-0.3,0-0.5-0.1-0.7-0.3l-1.4-1.4c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l1.4,1.4c0.4,0.4,0.4,1,0,1.4C20.3,16.7,20.1,16.8,19.8,16.8z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="main-grid">
+                <div class="left-column">
+                    <section id="solver" class="dashboard-panel">
+                        <div class="panel-header">
+                            <h2>Ordinary Differential Equation Solver</h2>
+                            <span class="panel-subtitle">Solve ODEs numerically with precision and visualization</span>
+                        </div>
+
+                        <div class="panel-section">
+                            <h3>🔍 ODE Configuration</h3>
+                            <div class="operation-controls">
+                                <div class="control-group">
+                                    <label>Equation Type</label>
+                                    <select id="odeType" class="input-field">
+                                        <option value="first_order">First Order ODE</option>
+                                        <option value="second_order">Second Order ODE</option>
+                                        <option value="system">System of ODEs</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label>Differential Equation</label>
+                                    <input type="text" id="odeEquation" class="input-field ode-equation-input"
+                                           placeholder="e.g., dy/dx = x + y">
+                                    <div class="input-hint">Use: dy/dx or y' for first order, d²y/dx² for second order</div>
+                                </div>
+                                <div class="control-group">
+                                    <label>Initial Conditions</label>
+                                    <input type="text" id="initialConditions" class="input-field initial-conditions-input"
+                                           placeholder="e.g., y(0)=1, y'(0)=0">
+                                    <div class="input-hint">Separate multiple conditions with commas</div>
+                                </div>
+                                <div class="control-group">
+                                    <label>Solution Range</label>
+                                    <div class="dimension-controls">
+                                        <input type="number" id="rangeStart" placeholder="Start" class="input-field compact" value="0" step="0.1">
+                                        <span class="dimension-separator">to</span>
+                                        <input type="number" id="rangeEnd" placeholder="End" class="input-field compact" value="10" step="0.1">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label>Step Size</label>
+                                    <input type="number" id="stepSize" class="input-field" placeholder="e.g., 0.1" value="0.1" step="0.01" min="0.001">
+                                    <div class="input-hint">Smaller steps = higher precision, longer computation</div>
+                                </div>
+                                <button id="solveOdeBtn" class="btn btn-primary">
+                                    <span class="btn-icon">⚡</span>
+                                    Solve Differential Equation
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="panel-section">
+                            <h3>📚 Common ODE Examples</h3>
+                            <div class="quick-actions">
+                                <button class="quick-btn example-btn" data-equation="dy/dx = -2*y" data-conditions="y(0)=1" data-type="first_order">
+                                    <span class="quick-icon">📈</span>
+                                    Exponential Decay
+                                </button>
+                                <button class="quick-btn example-btn" data-equation="d²y/dx² + 4*y = 0" data-conditions="y(0)=0, y'(0)=1" data-type="second_order">
+                                    <span class="quick-icon">🌊</span>
+                                    Harmonic Oscillator
+                                </button>
+                                <button class="quick-btn example-btn" data-equation="dy/dx = x - y" data-conditions="y(0)=1" data-type="first_order">
+                                    <span class="quick-icon">📐</span>
+                                    Linear ODE
+                                </button>
+                                <button class="quick-btn example-btn" data-equation="dx/dt = y, dy/dt = -x" data-conditions="x(0)=1, y(0)=0" data-type="system">
+                                    <span class="quick-icon">🔄</span>
+                                    System Example
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="right-column">
+                    <section class="dashboard-panel results-panel">
+                        <div class="panel-header">
+                            <h2>Solution Results</h2>
+                            <span class="panel-subtitle">Numerical solution and detailed analysis</span>
+                        </div>
+                        <div class="result-container">
+                            <pre id="deResult" class="result-output">// Solution will appear here
+
+Enter your differential equation and click "Solve" to see the numerical solution.
+
+Supported formats:
+• First order: dy/dx = f(x,y) or y' = f(x,y)
+• Second order: d²y/dx² = f(x,y,y')
+• Systems: dx/dt = f1(x,y,t), dy/dt = f2(x,y,t)
+
+Examples loaded above for quick testing.</pre>
+                            <div class="result-actions">
+                                <button id="copyDeResultBtn" class="btn btn-outline">
+                                    <span class="btn-icon">📋</span>
+                                    Copy
+                                </button>
+                                <button id="clearDeResultBtn" class="btn btn-outline">
+                                    <span class="btn-icon">🗑️</span>
+                                    Clear
+                                </button>
+                                <button id="exportDataBtn" class="btn btn-outline">
+                                    <span class="btn-icon">📊</span>
+                                    Export Data
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-panel">
+                        <div class="panel-header">
+                            <h2>Solution Visualization</h2>
+                            <span class="panel-subtitle">Graphical representation of the solution</span>
+                        </div>
+                        <div class="panel-section">
+                            <div id="plotContainer" class="plot-container">
+                                <div class="plot-placeholder" id="plotPlaceholder">
+                                    <div class="plot-icon">📊</div>
+                                    <div class="plot-message">Solution plot will be generated here</div>
+                                    <div class="plot-hint">Solve an equation to see the visualization</div>
+                                </div>
+                                <canvas id="solutionChart" style="display: none;"></canvas>
+                            </div>
+                            <div class="plot-controls" id="plotControls" style="display: none;">
+                                <button id="toggleGrid" class="btn btn-outline">Toggle Grid</button>
+                                <button id="exportPlot" class="btn btn-outline">Export Plot</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-panel">
+                        <div class="panel-header">
+                            <h2>Solution Analysis</h2>
+                            <span class="panel-subtitle">Mathematical properties and behavior</span>
+                        </div>
+                        <div class="panel-section">
+                            <div id="analysisContainer" class="analysis-container">
+                                <div class="analysis-placeholder">
+                                    <div class="analysis-icon">🔍</div>
+                                    <div class="analysis-message">Solution analysis will appear here</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/theme_manager.js"></script>
+    <script src="/static/differential_equations.js"></script>
+    <script src="/static/notification_manager.js"></script>
+</body>
+</html>
