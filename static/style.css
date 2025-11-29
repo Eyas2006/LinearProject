@@ -1,5 +1,4 @@
 :root {
-    /* Modern Color Palette */
     --primary-50: #f0f9ff;
     --primary-100: #e0f2fe;
     --primary-200: #bae6fd;
@@ -24,28 +23,24 @@
     --info-500: #3b82f6;
     --info-600: #2563eb;
 
-    /* Matrix Calculator Colors */
     --matrix-primary: #0ea5e9;
     --matrix-success: #10b981;
     --matrix-warning: #f59e0b;
     --matrix-error: #ef4444;
     --matrix-info: #8b5cf6;
 
-    /* Differential Equations Colors */
     --diff-primary: #8b5cf6;
     --diff-success: #06b6d4;
     --diff-warning: #f59e0b;
     --diff-error: #ef4444;
     --diff-info: #10b981;
 
-    /* About Page Colors */
     --about-primary: #10b981;
     --about-success: #0ea5e9;
     --about-warning: #f59e0b;
     --about-error: #ef4444;
     --about-info: #8b5cf6;
 
-    /* Neutral Colors */
     --neutral-50: #f8fafc;
     --neutral-100: #f1f5f9;
     --neutral-200: #e2e8f0;
@@ -57,37 +52,31 @@
     --neutral-800: #1e293b;
     --neutral-900: #0f172a;
 
-    /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--primary-500), var(--accent-500));
     --gradient-secondary: linear-gradient(135deg, var(--primary-400), var(--primary-600));
     --gradient-dark: linear-gradient(135deg, var(--neutral-900), var(--neutral-800));
     --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
 
-    /* Page-specific gradients */
     --gradient-matrix: linear-gradient(135deg, var(--matrix-primary), var(--matrix-info));
     --gradient-diff: linear-gradient(135deg, var(--diff-primary), var(--diff-success));
     --gradient-about: linear-gradient(135deg, var(--about-primary), var(--about-info));
 
-    /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --shadow-glow: 0 0 20px rgba(14, 165, 233, 0.15);
 
-    /* Border Radius */
     --radius-sm: 6px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
     --radius-2xl: 20px;
 
-    /* Transitions */
     --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Light Theme */
 [data-theme="light"] {
     --bg-primary: #ffffff;
     --bg-secondary: #f8fafc;
@@ -109,7 +98,6 @@
     --bg-gradient: linear-gradient(135deg, var(--primary-50), var(--neutral-50));
 }
 
-/* Dark Theme */
 [data-theme="dark"] {
     --bg-primary: #0f172a;
     --bg-secondary: #1e293b;
@@ -131,7 +119,6 @@
     --bg-gradient: linear-gradient(135deg, var(--neutral-900), var(--neutral-800));
 }
 
-/* Page-specific background gradients */
 [data-page="matrix-calculator"] .animated-bg {
     background: linear-gradient(135deg,
         rgba(14, 165, 233, 0.05),
@@ -174,7 +161,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Enhanced Animated Background */
 .animated-bg {
     position: fixed;
     top: 0;
@@ -218,7 +204,6 @@ body {
     animation: float 8s ease-in-out infinite;
 }
 
-/* Page-specific floating elements */
 [data-page="matrix-calculator"] .floating-element {
     background: var(--gradient-matrix);
 }
@@ -267,7 +252,6 @@ body {
     }
 }
 
-/* Particle Background */
 .particles-container {
     position: fixed;
     top: 0;
@@ -285,7 +269,6 @@ body {
     animation: particleFloat 12s ease-in-out infinite;
 }
 
-/* Page-specific particle colors */
 [data-page="matrix-calculator"] .particle {
     background: var(--matrix-primary);
 }
@@ -313,7 +296,6 @@ body {
     }
 }
 
-/* Enhanced Notification System */
 .notification {
     position: fixed;
     bottom: 24px;
@@ -355,7 +337,6 @@ body {
     height: 100%;
 }
 
-/* Page-specific notification colors */
 [data-page="matrix-calculator"] .notification-success {
     background: rgba(16, 185, 129, 0.1);
     color: var(--matrix-success);
@@ -396,7 +377,6 @@ body {
     background: var(--matrix-info);
 }
 
-/* Differential Equations notifications */
 [data-page="differential-equations"] .notification-success {
     background: rgba(6, 182, 212, 0.1);
     color: var(--diff-success);
@@ -437,7 +417,6 @@ body {
     background: var(--diff-info);
 }
 
-/* About page notifications */
 [data-page="about"] .notification-success {
     background: rgba(16, 185, 129, 0.1);
     color: var(--about-success);
@@ -524,7 +503,6 @@ body {
     animation: slideOutDown 0.2s ease-in forwards;
 }
 
-/* Quick disappearance for matrix calculator page */
 body[data-page="matrix-calculator"] .notification {
     animation: quickNotification 2s ease-in-out forwards;
 }
@@ -548,7 +526,6 @@ body[data-page="matrix-calculator"] .notification {
     }
 }
 
-/* Responsive design for notifications */
 @media (max-width: 768px) {
     .notification {
         top: 80px;
@@ -594,7 +571,6 @@ body[data-page="matrix-calculator"] .notification {
     z-index: 1;
 }
 
-/* Enhanced Professional Header */
 .header {
     background: var(--bg-glass);
     border-bottom: 1px solid var(--border-primary);
@@ -650,7 +626,6 @@ body[data-page="matrix-calculator"] .notification {
     text-transform: uppercase;
 }
 
-/* Enhanced Navigation */
 .nav {
     display: flex;
     gap: 0.5rem;
@@ -746,13 +721,11 @@ body[data-page="matrix-calculator"] .notification {
     fill: white;
 }
 
-/* Main Layout */
 .main {
     padding: 2rem 0;
     min-height: calc(100vh - 80px);
 }
 
-/* Stats Grid */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -812,7 +785,6 @@ body[data-page="matrix-calculator"] .notification {
     font-weight: 500;
 }
 
-/* Main Grid Layout */
 .main-grid {
     display: grid;
     grid-template-columns: 1fr 400px;
@@ -834,7 +806,6 @@ body[data-page="matrix-calculator"] .notification {
     top: 2rem;
 }
 
-/* Dashboard Panels */
 .dashboard-panel {
     background: var(--bg-card);
     border: 1px solid var(--border-primary);
@@ -896,7 +867,6 @@ body[data-page="matrix-calculator"] .notification {
     gap: 0.5rem;
 }
 
-/* Quick Actions */
 .quick-actions {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -932,7 +902,6 @@ body[data-page="matrix-calculator"] .notification {
     opacity: 0.8;
 }
 
-/* Matrix Controls */
 .matrix-controls {
     display: flex;
     flex-direction: column;
@@ -969,14 +938,12 @@ body[data-page="matrix-calculator"] .notification {
     font-weight: 500;
 }
 
-/* Operation Controls */
 .operation-controls {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-/* Input Fields */
 .input-field {
     padding: 0.75rem 1rem;
     border: 1px solid var(--border-primary);
@@ -1003,7 +970,6 @@ body[data-page="matrix-calculator"] .notification {
     color: var(--text-muted);
 }
 
-/* Buttons */
 .btn {
     padding: 0.75rem 1.5rem;
     border: none;
@@ -1079,7 +1045,6 @@ body[data-page="matrix-calculator"] .notification {
     gap: 0.75rem;
 }
 
-/* Matrix Grid */
 .matrix-grid {
     margin: 1rem 0;
     padding: 1.5rem;
@@ -1124,7 +1089,6 @@ body[data-page="matrix-calculator"] .notification {
     margin-bottom: 0;
 }
 
-/* Results Panel */
 .results-panel {
     flex: 1;
 }
@@ -1156,7 +1120,6 @@ body[data-page="matrix-calculator"] .notification {
     justify-content: flex-end;
 }
 
-/* History Panel */
 .history-panel {
     flex: 1;
 }
@@ -1205,7 +1168,6 @@ body[data-page="matrix-calculator"] .notification {
     white-space: nowrap;
 }
 
-/* Library Panel */
 .library-panel {
     flex: 1;
 }
@@ -1261,7 +1223,6 @@ body[data-page="matrix-calculator"] .notification {
     font-weight: 600;
 }
 
-/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -1346,7 +1307,6 @@ body[data-page="matrix-calculator"] .notification {
     justify-content: flex-end;
 }
 
-/* Loading States */
 .loading {
     opacity: 0.7;
     pointer-events: none;
@@ -1372,13 +1332,11 @@ body[data-page="matrix-calculator"] .notification {
     100% { transform: rotate(360deg); }
 }
 
-/* Enhanced About Page Styles */
 .about-grid {
     grid-template-columns: 1fr !important;
     gap: 2.5rem;
 }
 
-/* Academic Hero Section - Theme Responsive */
 .academic-hero-panel {
     background: linear-gradient(135deg, var(--primary-900), var(--neutral-900)) !important;
     border: none !important;
@@ -1504,7 +1462,6 @@ body[data-page="matrix-calculator"] .notification {
     font-weight: 500;
 }
 
-/* Enhanced Developer Profile */
 .developer-profile {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -1658,7 +1615,6 @@ body[data-page="matrix-calculator"] .notification {
     transform: scale(1.1);
 }
 
-/* Enhanced Supervisor Profile */
 .supervisor-panel {
     border-left: 4px solid var(--accent-500) !important;
     transition: all 0.3s ease;
@@ -1856,7 +1812,6 @@ body[data-page="matrix-calculator"] .notification {
     transition: color 0.3s ease;
 }
 
-/* Enhanced Features Grid */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1932,7 +1887,6 @@ body[data-page="matrix-calculator"] .notification {
     transition: color 0.3s ease;
 }
 
-/* Enhanced Technical Specifications */
 .tech-specs {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -2017,7 +1971,6 @@ body[data-page="matrix-calculator"] .notification {
     transition: color 0.3s ease;
 }
 
-/* Enhanced Impact Grid */
 .impact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -2059,7 +2012,6 @@ body[data-page="matrix-calculator"] .notification {
     transition: color 0.3s ease;
 }
 
-/* Enhanced Contact Section */
 .contact-future {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2177,7 +2129,6 @@ body[data-page="matrix-calculator"] .notification {
     border-bottom: none;
 }
 
-/* Enhanced Notification Animations */
 .notification {
     transform: translateY(100px);
     opacity: 0;
@@ -2194,7 +2145,6 @@ body[data-page="matrix-calculator"] .notification {
     opacity: 0;
 }
 
-/* Responsive Design Enhancements */
 @media (max-width: 1200px) {
     .main-grid {
         grid-template-columns: 1fr;
@@ -2357,7 +2307,6 @@ body[data-page="matrix-calculator"] .notification {
     }
 }
 
-/* Animation Enhancements */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -2379,23 +2328,19 @@ body[data-page="matrix-calculator"] .notification {
 .dashboard-panel:nth-child(5) { animation-delay: 0.4s; }
 .dashboard-panel:nth-child(6) { animation-delay: 0.5s; }
 
-/* Theme transition smoothness */
 * {
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-/* Ensure all interactive elements have proper theme transitions */
 .btn, .nav-link, .input-field, .matrix-input, .quick-btn, .stat-card {
     transition: all 0.3s ease !important;
 }
 
-/* Enhanced focus states for accessibility */
 .btn:focus, .nav-link:focus, .input-field:focus, .matrix-input:focus {
     outline: 2px solid var(--primary-500);
     outline-offset: 2px;
 }
 
-/* Print styles for professional output */
 @media print {
     .animated-bg, .particles-container, .header-controls, .nav {
         display: none !important;
@@ -2413,7 +2358,6 @@ body[data-page="matrix-calculator"] .notification {
     }
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -2432,7 +2376,6 @@ body[data-page="matrix-calculator"] .notification {
     background: var(--primary-600);
 }
 
-/* Selection Styling */
 ::selection {
     background: var(--primary-500);
     color: white;
@@ -2443,7 +2386,6 @@ body[data-page="matrix-calculator"] .notification {
     color: white;
 }
 
-/* Enhanced Dynamic Notification System */
 .notification {
     position: fixed;
     bottom: 24px;
@@ -2485,7 +2427,6 @@ body[data-page="matrix-calculator"] .notification {
     height: 100%;
 }
 
-/* Status-based notification types */
 .notification-success {
     background: rgba(16, 185, 129, 0.1);
     color: var(--success-500);
@@ -2526,7 +2467,6 @@ body[data-page="matrix-calculator"] .notification {
     background: var(--info-500);
 }
 
-/* Page-specific notification themes */
 [data-page="matrix-calculator"] .notification-success {
     background: rgba(16, 185, 129, 0.1);
     color: var(--matrix-success);
@@ -2545,7 +2485,6 @@ body[data-page="matrix-calculator"] .notification {
     border-color: rgba(16, 185, 129, 0.2);
 }
 
-/* Notification icons */
 .notification-icon {
     font-size: 1.2rem;
     margin-right: 0.5rem;
@@ -2595,4 +2534,5 @@ body[data-page="matrix-calculator"] .notification {
 
 .notification.hiding {
     animation: slideOutDown 0.2s ease-in forwards;
+
 }
