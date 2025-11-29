@@ -1,48 +1,33 @@
-# 🧮 MatrixLab Pro
+# LinearProject - MatrixLab Pro - Web-Based Math Calculator
 
-<div align="center">
+MatrixLab Pro is a powerful web application that helps students and researchers perform advanced matrix calculations and solve differential equations through an easy-to-use interface.
 
-![MatrixLab Pro](https://img.shields.io/badge/MatrixLab-Pro-brightgreen)
-![Python](https://img.shields.io/badge/Python-Flask-blue)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)
-![Status](https://img.shields.io/badge/Status-Active-success)
+## What It Does
 
-**A comprehensive web-based platform for advanced matrix operations and differential equation solving**
+### Matrix Calculator
+- Create and save matrices
+- Perform operations: addition, multiplication, determinants, inverses
+- Advanced analysis: eigenvalues, RREF, rank, diagonalization
+- Solve linear systems using Cramer's Rule
 
-*Built for Linear Mathematics Course - Palestine Technical University Kadoorie*
+### Differential Equations Solver
+- Solve first-order and second-order ODEs
+- Handle systems of differential equations
+- Visualize solutions with interactive graphs
+- Get step-by-step numerical results
 
-[Features](#-features) • [Demo](#-demo) • [Installation](#-installation) • [Usage](#-usage) • [Contributing](#-contributing)
+### Key Features
+- 🎨 Clean, professional interface with dark/light themes
+- 💾 Save your work and access it later
+- 📱 Works on computers, tablets, and phones
+- 🚀 Fast calculations with real-time results
+- 📚 Perfect for learning and teaching mathematics
 
-</div>
+## How to Use
 
-## 📖 Overview
-
-MatrixLab Pro is an advanced mathematical computing platform that provides an intuitive web interface for performing complex matrix operations and solving differential equations. Developed as an academic research project, it bridges theoretical mathematics with practical computational applications.
-
-## ✨ Features
-
-### 🧮 Matrix Operations
-- **Basic Operations**: Addition, subtraction, multiplication
-- **Advanced Analysis**: Determinants, inverses, eigenvalues, RREF
-- **Linear Algebra**: Rank, nullity, diagonalization, basis analysis
-- **System Solving**: Cramer's rule for linear equations
-- **Smart Storage**: Save and manage matrices with persistent storage
-
-### 📈 Differential Equations
-- **First & Second Order ODEs**: Numerical solutions with visualization
-- **Systems of ODEs**: Multi-equation system analysis
-- **Interactive Plots**: Real-time solution graphs
-- **Step-by-Step Solutions**: Detailed numerical results
-
-### 🎨 User Experience
-- **Modern Interface**: Professional dark/light themes
-- **Real-time Computation**: Instant results with loading states
-- **Responsive Design**: Works on desktop and mobile
-- **History Tracking**: Complete operation history
-- **Educational Focus**: Clear, formatted outputs for learning
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Python 3.7 or higher
-- Modern web browser
+### Quick Setup
+1. Make sure you have Python installed
+2. Download or clone this project
+3. Install required packages:
+```bash
+pip install flask numpy scipy sympy
