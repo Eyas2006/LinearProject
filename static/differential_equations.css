@@ -1,0 +1,516 @@
+/* Enhanced Professional Styling for Differential Equations Solver */
+
+/* Page-specific styling */
+[data-page="differential-equations"] {
+    --primary-gradient: var(--gradient-diff);
+    --success-color: var(--diff-success);
+    --warning-color: var(--diff-warning);
+    --error-color: var(--diff-error);
+    --info-color: var(--diff-info);
+}
+
+/* Main Solver Panel Enhancements */
+#solver .dashboard-panel {
+    border-left: 4px solid var(--diff-primary);
+    background: var(--bg-card);
+    position: relative;
+    overflow: hidden;
+}
+
+#solver .dashboard-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.02), rgba(6, 182, 212, 0.02));
+    pointer-events: none;
+}
+
+/* Enhanced Panel Headers */
+#solver .panel-header {
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    border-bottom: 1px solid var(--border-primary);
+    position: relative;
+}
+
+#solver .panel-header h2 {
+    color: var(--diff-primary);
+    font-weight: 700;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+#solver .panel-header h2::before {
+    content: '';
+    width: 4px;
+    height: 24px;
+    background: var(--gradient-diff);
+    border-radius: 2px;
+}
+
+/* Enhanced Input Groups */
+.ode-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.ode-input-group {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-primary);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.ode-input-group:hover {
+    border-color: var(--diff-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.ode-input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.ode-input-group label::before {
+    content: '▸';
+    color: var(--diff-primary);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Enhanced Input Fields */
+.ode-equation-input,
+.initial-conditions-input {
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    font-size: 0.95rem;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-primary);
+    transition: all 0.3s ease;
+}
+
+.ode-equation-input:focus,
+.initial-conditions-input:focus {
+    border-color: var(--diff-primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Professional Example Buttons */
+.example-btn {
+    padding: 1.25rem;
+    border: 2px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.example-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-diff);
+    opacity: 0.1;
+    transition: var(--transition-slow);
+}
+
+.example-btn:hover::before {
+    left: 0;
+}
+
+.example-btn:hover {
+    background: var(--diff-primary);
+    color: white;
+    border-color: var(--diff-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.example-btn .quick-icon {
+    font-size: 1.75rem;
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.example-btn:hover .quick-icon {
+    transform: scale(1.1);
+}
+
+/* Enhanced Solve Button */
+#solveOdeBtn {
+    margin-top: 1rem;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: var(--gradient-diff);
+    border: none;
+    border-radius: var(--radius-lg);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#solveOdeBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+#solveOdeBtn:hover::before {
+    left: 100%;
+}
+
+#solveOdeBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+#solveOdeBtn:active {
+    transform: translateY(0);
+}
+
+/* Professional Results Panel */
+.results-panel {
+    border-left: 4px solid var(--diff-success);
+}
+
+#deResult {
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    min-height: 200px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border: 1px solid var(--border-primary);
+    transition: all 0.3s ease;
+}
+
+#deResult:hover {
+    border-color: var(--diff-primary);
+}
+
+/* Enhanced Plot Container */
+.plot-container {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-primary);
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.plot-container:hover {
+    border-color: var(--diff-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.plot-placeholder {
+    height: 350px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-tertiary);
+    flex-direction: column;
+    gap: 1rem;
+    border: 2px dashed var(--border-primary);
+    transition: all 0.3s ease;
+}
+
+.plot-placeholder:hover {
+    border-color: var(--diff-primary);
+    background: var(--bg-secondary);
+}
+
+.plot-icon {
+    font-size: 3.5rem;
+    opacity: 0.7;
+}
+
+.plot-message {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.plot-hint {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    text-align: center;
+}
+
+/* Professional Analysis Container */
+.analysis-container {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-primary);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.analysis-container:hover {
+    border-color: var(--diff-primary);
+}
+
+.solution-analysis {
+    color: var(--text-primary);
+}
+
+.solution-analysis h4 {
+    color: var(--diff-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.solution-analysis h4::before {
+    content: '📊';
+    font-size: 1.2rem;
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.analysis-item {
+    background: var(--bg-tertiary);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-primary);
+    transition: all 0.3s ease;
+}
+
+.analysis-item:hover {
+    transform: translateY(-1px);
+    border-color: var(--diff-primary);
+}
+
+.analysis-item strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+}
+
+/* Enhanced Control Groups */
+.control-group {
+    background: var(--bg-secondary);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-primary);
+    transition: all 0.3s ease;
+}
+
+.control-group:hover {
+    border-color: var(--diff-primary);
+}
+
+.control-group label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Professional Range Controls */
+.range-controls {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: end;
+}
+
+.range-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.range-input-group label {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.dimension-separator {
+    color: var(--text-tertiary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Enhanced Step Size Control */
+.step-size-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.step-size-control label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Input Hints Styling */
+.input-hint {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Loading State Enhancement */
+.ode-solving {
+    position: relative;
+}
+
+.ode-solving::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--diff-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+    #solver .dashboard-panel {
+        border-left: 3px solid var(--diff-primary);
+    }
+
+    .analysis-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .range-controls {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .example-btn {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .plot-placeholder {
+        height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ode-input-group {
+        padding: 1rem;
+    }
+
+    #solveOdeBtn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    .plot-icon {
+        font-size: 2.5rem;
+    }
+
+    .plot-message {
+        font-size: 1rem;
+    }
+}
+
+/* Animation for smooth transitions */
+.solution-result {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced mathematical typography */
+.math-symbol {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: bold;
+    color: var(--diff-primary);
+}
+
+.math-operator {
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    margin: 0 0.25rem;
+    color: var(--diff-info);
+}
+
+/* Success state indicators */
+.solution-success {
+    border-left-color: var(--diff-success) !important;
+}
+
+.solution-error {
+    border-left-color: var(--diff-error) !important;
+}
+
+.solution-warning {
+    border-left-color: var(--diff-warning) !important;
+}
