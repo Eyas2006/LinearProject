@@ -64,14 +64,13 @@
                                     <select id="odeType" class="input-field">
                                         <option value="first_order">First Order ODE</option>
                                         <option value="second_order">Second Order ODE</option>
-                                        <option value="system">System of ODEs</option>
                                     </select>
                                 </div>
                                 <div class="control-group">
                                     <label>Differential Equation</label>
                                     <input type="text" id="odeEquation" class="input-field ode-equation-input"
                                            placeholder="e.g., dy/dx = x + y">
-                                    <div class="input-hint">Use: dy/dx or y' for first order, d²y/dx² for second order</div>
+                                    <div class="input-hint">Use: dy/dx or y' for first order, y'' for second order</div>
                                 </div>
                                 <div class="control-group">
                                     <label>Initial Conditions</label>
@@ -106,7 +105,7 @@
                                     <span class="quick-icon">📈</span>
                                     Exponential Decay
                                 </button>
-                                <button class="quick-btn example-btn" data-equation="d²y/dx² + 4*y = 0" data-conditions="y(0)=0, y'(0)=1" data-type="second_order">
+                                <button class="quick-btn example-btn" data-equation="y'' + 4y = 0" data-conditions="y(0)=0, y'(0)=1" data-type="second_order">
                                     <span class="quick-icon">🌊</span>
                                     Harmonic Oscillator
                                 </button>
@@ -114,7 +113,7 @@
                                     <span class="quick-icon">📐</span>
                                     Linear ODE
                                 </button>
-                                <button class="quick-btn example-btn" data-equation="dx/dt = y, dy/dt = -x" data-conditions="x(0)=1, y(0)=0" data-type="system">
+                                <button class="quick-btn example-btn" data-equation="dy/dx = x + y" data-conditions="y(5)=1" data-type="first_order">
                                     <span class="quick-icon">🔄</span>
                                     System Example
                                 </button>
@@ -136,8 +135,7 @@ Enter your differential equation and click "Solve" to see the numerical solution
 
 Supported formats:
 • First order: dy/dx = f(x,y) or y' = f(x,y)
-• Second order: d²y/dx² = f(x,y,y')
-• Systems: dx/dt = f1(x,y,t), dy/dt = f2(x,y,t)
+• Second order: y'' = f(x,y,y')
 
 Examples loaded above for quick testing.</pre>
                             <div class="result-actions">
@@ -202,5 +200,4 @@ Examples loaded above for quick testing.</pre>
     <script src="/static/differential_equations.js"></script>
     <script src="/static/notification_manager.js"></script>
 </body>
-
 </html>
