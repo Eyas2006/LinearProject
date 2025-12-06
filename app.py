@@ -1,15 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 from utils.algebra import MatrixAlgebra
 from scipy.integrate import solve_ivp
-import sympy as sp
-from sympy import symbols, Function, dsolve, Eq, parse_expr
 import re
 import numpy as np
 import json
 import os
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "matrix_algebra_pro_secure_key_2024")
+app.secret_key = os.environ.get("SECRET_KEY", "matrix_lab_pro_secure_key_2025")
 
 MATRICES_FILE = 'data/matrices.json'
 HISTORY_FILE = 'data/computation_history.json'
@@ -102,22 +100,10 @@ def index():
             operation = request.form.get("op")
             matrix_data = request.form.get("selected_matrix")
 
-            if matrix_data:
-                try:
-                    matrix = json.loads(matrix_data)
-                except:
-                    matrix = [[0.0 for _ in range(cols)] for _ in range(rows)]
-            else:
-                matrix = []
-                for r in range(rows):
-                    row = []
-                    for c in range(cols):
-                        cell_value = request.form.get(f"cell_{r}_{c}", "0").strip()
-                        try:
-                            row.append(float(cell_value))
-                        except:
-                            row.append(0.0)
-                    matrix.append(row)
+            try:
+                matrix = json.loads(matrix_data)
+            except:
+                matrix = [[0.0 for _ in range(cols)] for _ in range(rows)]
 
             try:
                 operation_handlers = {
@@ -408,7 +394,7 @@ def quick_actions():
 
 @app.route("/health", methods=["GET"])
 def health_check():
-    return jsonify({"status": "healthy", "service": "matrix_algebra_toolkit"})
+    return jsonify({"status": "healthy", "service": "MatrixLab Pro"})
 
 @app.route("/differential-equations")
 def differential_equations():
@@ -420,9 +406,6 @@ def about():
 
 
 def solve_ode_numerically(equation, conditions, ode_type, start, end, step):
-    """
-    Solve ODE numerically using scipy
-    """
     try:
         if ode_type == "first_order":
             return solve_first_order_ode(equation, conditions, start, end, step)
@@ -437,11 +420,9 @@ def solve_ode_numerically(equation, conditions, ode_type, start, end, step):
 
 
 def solve_first_order_ode(equation, conditions, start, end, step):
-    """Solve first order ODE: dy/dx = f(x, y)"""
     try:
         equation = equation.replace(' ', '')
 
-        # Handle different equation formats
         if 'dy/dx=' in equation:
             expr = equation.split('dy/dx=')[1]
         elif "y'=" in equation:
@@ -488,10 +469,8 @@ def solve_first_order_ode(equation, conditions, start, end, step):
 
 
 def solve_second_order_ode(equation, conditions, start, end, step):
-    """Solve second order ODE"""
     try:
         equation = equation.replace(' ', '')
-
         if "d²y/dx²+4y=0" in equation or "y''+4y=0" in equation:
             conditions = conditions.replace(' ', '')
             y_match = re.search(r"y\(([^)]+)\)=([^,]+)", conditions)
@@ -529,13 +508,11 @@ def solve_second_order_ode(equation, conditions, start, end, step):
 
 
 def solve_system_ode(equation, conditions, start, end, step):
-    """Solve system of ODEs"""
     try:
         equations = [eq.strip() for eq in equation.split(',')]
         conditions = conditions.replace(' ', '')
 
         if any("dx/dt=y" in eq for eq in equations) and any("dy/dt=-x" in eq for eq in equations):
-            # Parse initial conditions
             x_match = re.search(r"x\(([^)]+)\)=([^,]+)", conditions)
             y_match = re.search(r"y\(([^)]+)\)=([^,]+)", conditions)
 
@@ -600,5 +577,4 @@ def solve_ode():
         return jsonify({"success": False, "error": str(e)})
 
 if __name__ == "__main__":
-
     app.run(debug=False, host='0.0.0.0', port=5000)
