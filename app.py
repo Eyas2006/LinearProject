@@ -411,8 +411,6 @@ def solve_ode_numerically(equation, conditions, ode_type, start, end, step):
             return solve_first_order_ode(equation, conditions, start, end, step)
         elif ode_type == "second_order":
             return solve_second_order_ode(equation, conditions, start, end, step)
-        elif ode_type == "system":
-            return solve_system_ode(equation, conditions, start, end, step)
         else:
             raise ValueError(f"Unsupported ODE type: {ode_type}")
     except Exception as e:
@@ -507,46 +505,6 @@ def solve_second_order_ode(equation, conditions, start, end, step):
         raise Exception(f"Second order ODE solving error: {str(e)}")
 
 
-def solve_system_ode(equation, conditions, start, end, step):
-    try:
-        equations = [eq.strip() for eq in equation.split(',')]
-        conditions = conditions.replace(' ', '')
-
-        if any("dx/dt=y" in eq for eq in equations) and any("dy/dt=-x" in eq for eq in equations):
-            x_match = re.search(r"x\(([^)]+)\)=([^,]+)", conditions)
-            y_match = re.search(r"y\(([^)]+)\)=([^,]+)", conditions)
-
-            x0 = float(x_match.group(2)) if x_match else 1.0
-            y0 = float(y_match.group(2)) if y_match else 0.0
-
-            def ode_func(t, xy):
-                x, y = xy
-                return [y, -x]
-
-            t_eval = np.arange(start, end + step, step)
-            solution = solve_ivp(ode_func, [start, end], [x0, y0], t_eval=t_eval, method='RK45')
-
-            results = {
-                "type": "system",
-                "solution": {
-                    "t": solution.t.tolist(),
-                    "x": solution.y[0].tolist(),
-                    "y": solution.y[1].tolist()
-                },
-                "initial_conditions": conditions,
-                "equation": equation,
-                "range_start": start,
-                "range_end": end,
-                "step_size": step
-            }
-            return results
-        else:
-            raise ValueError("This system solver currently supports: dx/dt = y, dy/dt = -x")
-
-    except Exception as e:
-        raise Exception(f"System ODE solving error: {str(e)}")
-
-
 @app.route("/api/solve_ode", methods=["POST"])
 def solve_ode():
     data = request.get_json()
@@ -578,3 +536,4 @@ def solve_ode():
 
 if __name__ == "__main__":
     app.run(debug=False, host='0.0.0.0', port=5000)
+
