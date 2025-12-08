@@ -6,7 +6,7 @@ class MatrixAlgebra:
     def ref(matrix):
         try:
             M = sp.Matrix(matrix)
-            echelon_form, pivots = M.rref()
+            echelon_form, pivots = M.echelon_form(with_pivots=True)
             result = []
             for i in range(echelon_form.rows):
                 row = []
@@ -307,3 +307,4 @@ class MatrixAlgebra:
             return M.shape[1] - rank
         except Exception as e:
             raise Exception(f"Nullity computation failed: {str(e)}")
+
